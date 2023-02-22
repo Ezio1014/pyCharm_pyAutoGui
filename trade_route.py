@@ -108,7 +108,9 @@ def runAF_EU():
     # 基輔
     td.next_port(623, 143)
     td.navigation(23)
-    td.run_st(1, 1)
+    td.selfGoods()
+    td.buyGood([2, 3, 5])
+    td.out_port()
     # 貝魯特
     td.search_port('貝魯特', 52)
     td.run_st(1)

@@ -6,8 +6,19 @@ import pyautogui as pag
 import trade_route as tr
 import trade_def as td
 
-imp.reload(tr)
-imp.reload(td)
+
+# imp.reload(tr)
+# imp.reload(td)
+
+# 計時器
+def timer(f, timer_show):
+    if i == 0:
+        time_st = time.time()  # 開始計時
+        f
+        print(timer_show, '{:.1f}'.format(time.time() - time_st), 's')
+    else:
+        f
+
 
 # 啟動循環跑商
 # moneyNote = eval(input("紀錄目前存款"))
@@ -19,31 +30,28 @@ for i in range(t):
     time.sleep(3)
 
     # 貿易路線1(東南亞+日本線(天津衛出發(758.9 s)))
-    time_start = time.time()  # 開始計時
-    tr.runSA_JP()
-    time_end = time.time() - time_start  # 執行所花時間
-    if i == 0:
-        print('東南亞+日本線貿易時間:{:.1f}'.format(time_end), 's')
+    timer(tr.runSA_JP(), '東南亞+日本線貿易時間:')
+
+    # 驗證循環正常運作1
     if not td.verifyImg():
         break
 
     # 貿易路線2(歐非線(天津衛出發)(2069.4 s))
-    time_start = time.time()  # 開始計時
-    tr.runAF_EU()
-    time_end = time.time() - time_start  # 執行所花時間
-    if i == 0:
-        print('歐非線貿易時間:{:.1f}'.format(time_end), 's')
+    timer(tr.runAF_EU(), '歐非線貿易時間:')
+
+    # 驗證循環正常運作2
     if not td.verifyImg():
         break
 
     # 自動貿易(遊戲內建功能(755+13 s))
     tr.AT()
     print("貿易完成 {} 次，剩餘 {} 次".format(i + 1, t - (i + 1)))
+
     # 貿易卷使用
     if i < t - 1:
         td.tradebook()
 
-    # 驗證循環正常運作
+    # 驗證循環正常運作3
     if not td.verifyImg():
         break
 
