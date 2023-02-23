@@ -5,37 +5,13 @@ import trade_def as td
 
 
 # 貿易路線1(東南亞+日本線(天津衛出發))
-def runSA_JP():
+def runJP():
     td.out_port()  # 天津衛出發
 
-    # 淮安
-    td.run_trading(942, 745, 25, 0)
-    # 基隆
-    td.next_port(871, 886, 1)
-    td.navigation(3)
-    td.flag(17)  # 海盜旗使用
-    td.run_st(0)
-    # 安汶
-    td.search_port('安汶', 54)
-    td.run_st(0)
-    # 帝利
-    td.run_trading(613, 778, 21, 0)
-    # 巴達維亞
-    td.search_port('巴達維亞', 38)
-    td.run_st(0)
-    # 巴領旁
-    td.run_trading(708, 259, 17, 0)
-    # 汶萊
-    td.next_port(1301, 81)
-    td.navigation(28)
-    td.run_st(1)
-    # 長崎
-    td.search_port('長崎', 55)
-    td.run_st(0)
-
+    td.run_trading(1444, 823, 28, 0)  # 長崎
     td.run_tradingItems(1131, 391, 26, [2, 3, 1])  # 京都
-    td.run_trading(1005, 75, 36, 0, 1)  # 札幌
-    td.run_trading(306, 457, 24, 0)  # 符拉迪沃斯托克
+    td.run_trading(1005, 75, 35, 0, 1)  # 札幌
+    td.run_tradingItems(306, 457, 24, [1, 3, 4])  # 符拉迪沃斯托克
     td.run_trading(674, 887, 23, 0, 1)  # 釜山
     td.run_tradingItems(624, 265, 28, [4, 1, 3, 5])  # 平壤
 
@@ -55,22 +31,19 @@ def runAF_EU():
     td.search_port('廣州府', 32)
     td.buyGood([1, 5])
     td.out_port()
-    # 汶萊(東南亞日本線殺價過不能再次執行，額外獨立寫)
-    td.search_port('汶萊', 32)
-    td.press_sleep("t", 1.5)
-    td.click_xy(508, 361, 0.5)
-    td.click_xy(1157, 244, 0.5)
-    pag.press("num7")
+    # 汶萊
+    td.search_port('汶萊', 2)
+    td.flag(26)  # 海盜旗使用
+    td.buyGood([4])
     td.out_port()
     # 莫三比克
-    td.search_port('莫三比克', 22)
-    td.flag(74)  # 海盜旗使用
+    td.search_port('莫三比克', 100)
     td.buyGood([3, 5, 8])
     td.out_port()
 
     td.run_tradingItems(438, 881, 29, [4, 3, 6], 1)  # 索法拉
     td.run_tradingItems(787, 631, 16, [4, 5])  # 納塔爾
-    td.run_tradingItems(120, 710, 35, [2, 5])  # 開普敦
+    td.run_tradingItems(120, 710, 34, [2, 5])  # 開普敦
     td.run_tradingItems(659, 53, 28, [6], 2)  # 卡里比布
     td.run_tradingItems(788, 57, 25, [3], 1)  # 本格拉
 
@@ -81,7 +54,7 @@ def runAF_EU():
     pag.moveTo(359, 445)
     time.sleep(0.2)
     pag.scroll(-200)
-    time.sleep(0.3)
+    time.sleep(0.7)
     td.click_xy(240, 646, 0.5)
     td.press_sleep("num3", 0.5)
     td.click_xy(1157, 244, 0.8)
@@ -109,8 +82,16 @@ def runAF_EU():
     td.next_port(623, 143)
     td.navigation(23)
     td.selfGoods()
-    td.buyGood([2, 3, 5])
+    td.buyGood([3, 2, 5, 1])
     td.out_port()
+    # 亞歷山大
+    td.search_port('亞歷山大', 46)
+    td.run_st(0)
+    # 返回天津衛
+    td.search_port('天津衛', 35)
+    td.flag(210)  # 海盜旗使用
+    td.selfGoods()
+    '''
     # 貝魯特
     td.search_port('貝魯特', 52)
     td.run_st(1)
@@ -167,12 +148,14 @@ def runAF_EU():
     td.search_port('天津衛', 146)
     td.flag(120)  # 海盜旗使用
     td.selfGoods()
+    '''
 
 
 # 自動貿易(最後一港脫離卡死 time:760s)
 def AT():
     td.autoTrading()
-    time.sleep(734)
+    time.sleep(500)
+    td.flag(225)  # 海盜旗使用
 
     # 避免該死的漂流瓶...
     td.click_xy(1077, 217, 1)

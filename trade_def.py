@@ -24,21 +24,21 @@ def click_xy(x, y, t):
 def buyGood(buy):
     itemDict = {1: [238, 217], 2: [521, 210], 3: [246, 357], 4: [508, 361], 5: [246, 504], 6: [542, 504], 7: [240, 646],
                 8: [527, 646]}
-    time.sleep(0.9)
-    press_sleep("t", 1.5)
-    g = 0
+
+    time.sleep(0.8)
+    press_sleep("t", 1.6)
     for i in buy:
-        click_xy(itemDict[i][0], itemDict[i][1], 0.5)
-        if g == 0:
-            press_sleep("num3", 0.5)
-        g = 1
-        click_xy(1157, 244, 0.5)
+        click_xy(itemDict[i][0], itemDict[i][1], 0.6)
+        img = pag.locateOnScreen('./image/verifyImg/price_off.png', confidence=0.8, region=(680, 700, 300, 160))
+        if img:
+            press_sleep("num3", 0.6)
+        click_xy(1157, 244, 0.6)
     pag.press("num7")
 
 
 # 交易介面
 def trading(x=None):
-    time.sleep(1.5)
+    time.sleep(1.2)
     press_sleep("t", 1.5)
     if x == 1:
         press_sleep("num4", 6)
@@ -197,6 +197,6 @@ def black_market(p=None, t=None):
 # 辨識驗證
 def verifyImg():
     verify = False
-    img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.85, region=(740, 35, 100, 40))
+    img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.8, region=(740, 35, 100, 40))
     verify = True if img else False
     return verify
