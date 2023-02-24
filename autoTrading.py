@@ -38,17 +38,17 @@ while True:
     timer(tr.runJP, '日本線貿易時間:')
     
     # 驗證循環正常運作1
-    if not td.verifyImg():
-        print('中斷01')
-        break
+    # if not td.verifyImg():
+    #     print('中斷01')
+    #     break
 
     # 貿易路線2(歐非線(天津衛出發)(2069.4 s))
     timer(tr.runAF_EU, '歐非線貿易時間:')
 
     # 驗證循環正常運作2
-    if not td.verifyImg():
-        print('中斷02')
-        break
+    # if not td.verifyImg():
+    #     print('中斷02')
+    #     break
 
     # 自動貿易(遊戲內建功能(762.4 s))
     timer(tr.AT, '自動貿易時間:')

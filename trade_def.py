@@ -196,6 +196,8 @@ def black_market(p=None, t=None):
 
 # 辨識驗證
 def verifyImg():
+    pag.moveTo(798, 457)
+    time.sleep(0.1)
     verify = False
     img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.8, region=(740, 35, 100, 40))
     verify = True if img else False
