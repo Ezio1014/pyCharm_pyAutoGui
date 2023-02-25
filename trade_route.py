@@ -8,10 +8,10 @@ import trade_def as td
 def runJP():
     td.out_port()  # 天津衛出發
 
-    td.run_trading(1444, 823, 28, 0)  # 長崎
+    td.run_trading(1440, 823, 28, 0)  # 長崎
     td.run_tradingItems(1131, 391, 26, [2, 3, 1])  # 京都
     td.run_trading(1005, 75, 35, 0, 1)  # 札幌
-    td.run_tradingItems(306, 457, 24, [1, 3, 4])  # 符拉迪沃斯托克
+    td.run_tradingItems(306, 457, 24, [1, 4])  # 符拉迪沃斯托克
     td.run_trading(674, 887, 23, 0, 1)  # 釜山
     td.run_tradingItems(624, 265, 28, [4, 1, 3, 5])  # 平壤
 
@@ -80,7 +80,7 @@ def runAF_EU():
     td.run_tradingItems(1056, 204, 21, [2, 3, 4])
     # 基輔
     td.next_port(623, 143)
-    td.navigation(23)
+    td.navigation(25)
     td.selfGoods()
     td.buyGood([3, 2, 5, 1])
     td.out_port()
@@ -89,7 +89,8 @@ def runAF_EU():
     td.run_st(0)
     # 返回天津衛
     td.search_port('天津衛', 35)
-    td.flag(210)  # 海盜旗使用
+    td.flag(220)  # 海盜旗使用
+    td.verify_delay()
     td.selfGoods()
     '''
     # 貝魯特

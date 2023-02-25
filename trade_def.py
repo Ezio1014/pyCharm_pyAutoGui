@@ -30,6 +30,12 @@ def buyGood(buy):
     for i in buy:
         click_xy(itemDict[i][0], itemDict[i][1], 0.6)
         img = pag.locateOnScreen('./image/verifyImg/price_off.png', confidence=0.8, region=(680, 700, 300, 160))
+        img_soldOut = pag.locateOnScreen('./image/verifyImg/goods_soldout.png', confidence=0.8 \
+                                         , region=(520, 560, 550, 160))
+        time.sleep(0.2)
+        if img_soldOut:
+            press_sleep("esc", 0.6)
+            continue
         if img:
             press_sleep("num3", 0.6)
         click_xy(1157, 244, 0.6)
@@ -50,7 +56,7 @@ def trading(x=None):
 # 出港介面
 def out_port():
     time.sleep(0.7)
-    press_sleep("m", 1.5)
+    press_sleep("m", 2)
     press_sleep("num2", 4)
 
 
@@ -202,3 +208,15 @@ def verifyImg():
     img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.8, region=(740, 35, 100, 40))
     verify = True if img else False
     return verify
+
+
+# 辨識驗證(旅程出現狀況導致晚到港情況)
+def verify_delay():
+    pag.moveTo(798, 457)
+    time.sleep(0.1)
+    n = 0
+    img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.8, region=(740, 35, 100, 40))
+    if not img and n < 100:
+        n += 1
+        time.sleep(5)
+        return verify_delay()

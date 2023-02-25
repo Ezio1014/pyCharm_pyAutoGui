@@ -40,7 +40,7 @@ while True:
     # 驗證循環正常運作1
     # if not td.verifyImg():
     #     print('中斷01')
-    #     break
+    #     break7m
 
     # 貿易路線2(歐非線(天津衛出發)(2069.4 s))
     timer(tr.runAF_EU, '歐非線貿易時間:')
