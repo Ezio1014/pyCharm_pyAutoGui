@@ -144,7 +144,7 @@ def autoTrading():
 
 
 # 貿易卷使用
-def tradebook():
+def tradeBook():
     time.sleep(2)
     press_sleep("t", 1.5)
     click_xy(1159, 174, 1.2)
@@ -171,7 +171,7 @@ def ImgAutoSold():
 
 # 辨識+購買黑市商人商品
 def black_market(p=None, t=None):
-    img_list = os.listdir("./img")  # 遍歷資料夾內檔案
+    img_list = os.listdir("./image/blackMarketImg")  # 遍歷資料夾內檔案
     goodItems = {0: [75, 165], 1: [365, 165], 2: [75, 275], 3: [365, 275], 4: [75, 385]}  # totalHeight:475
     time.sleep(1)
     if p != None:
@@ -182,7 +182,7 @@ def black_market(p=None, t=None):
     for i in img_list:
         if i == 'ghostFlag.png':
             for j in goodItems:
-                img = pag.locateOnScreen('./img/ghostFlag.png', confidence=0.9 \
+                img = pag.locateOnScreen('./image/blackMarketImg/ghostFlag.png', confidence=0.9 \
                                          , region=(goodItems[j][0], goodItems[j][1], 280, 95))
                 if img:
                     x, y = pag.center(img)
@@ -190,14 +190,14 @@ def black_market(p=None, t=None):
                     click_xy(947, 714, 0.7)
                     press_sleep('num8', 1)
         else:
-            img = pag.locateOnScreen('./img/{}'.format(i), confidence=0.9, region=(70, 160, 580, 320))
+            img = pag.locateOnScreen('./image/blackMarketImg/{}'.format(i), confidence=0.9, region=(70, 160, 580, 320))
             if img:
                 x, y = pag.center(img)
                 click_xy(x, y, 0.7)
                 click_xy(947, 714, 0.7)
                 press_sleep('num8', 1)
     press_sleep('num7', 1)
-    press_sleep('num2', 1.5)
+    press_sleep('num2', 1.8)
 
 
 # 辨識驗證
