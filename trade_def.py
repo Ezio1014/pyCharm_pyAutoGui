@@ -211,14 +211,13 @@ def verifyImg():
 
 
 # 辨識驗證(旅程出現狀況導致晚到港情況)
-def verify_delay():
+def verify_delay(n=0):
     pag.moveTo(798, 457)
     time.sleep(0.1)
-    n = 0
     img = pag.locateOnScreen('./image/verifyImg/verify01.png', confidence=0.8, region=(740, 35, 100, 40))
-    if not img and n < 100:
+    if not img and n < 60:
         n += 1
         time.sleep(5)
-        return verify_delay()
-    elif not img and n == 100:
+        return verify_delay(n)
+    elif not img and n == 60:
         return 0
