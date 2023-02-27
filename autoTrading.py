@@ -28,10 +28,7 @@ pag.hotkey('alt', 'tab', interval=0.1)
 i = 0
 time.sleep(5)
 
-while True:
-    if i == t:
-        print('收工')
-        break
+for i in range(t):
     time.sleep(3)
 
     # 貿易路線1(東南亞+日本線(天津衛出發(758.9 s)))
@@ -56,13 +53,10 @@ while True:
 
     # 貿易卷使用
     if i < t - 1:
-        td.tradebook()
+        td.tradeBook()
 
     # 驗證循環正常運作3
     if not td.verifyImg():
         print('中斷03')
         break
-
-    i += 1
-
-# 總路線耗時約 61 mins 利潤 1450w
+# 總路線耗時約 41 mins 利潤 1100w

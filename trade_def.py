@@ -220,3 +220,5 @@ def verify_delay():
         n += 1
         time.sleep(5)
         return verify_delay()
+    elif not img and n == 100:
+        return 0

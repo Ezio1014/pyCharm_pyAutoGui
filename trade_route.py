@@ -89,8 +89,9 @@ def runAF_EU():
     td.run_st(0)
     # 返回天津衛
     td.search_port('天津衛', 35)
-    td.flag(220)  # 海盜旗使用
-    td.verify_delay()
+    td.flag(225)  # 海盜旗使用
+    if td.verify_delay() == 0:
+        td.click_xy(1566, 17, 1)
     td.selfGoods()
     '''
     # 貝魯特
